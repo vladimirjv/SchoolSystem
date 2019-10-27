@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace SchoolSystem.Models
 {
     public class User
@@ -13,5 +15,8 @@ namespace SchoolSystem.Models
 
         public string Role { get; set; }
         public string Token { get; set; }
+
+        // public List<SchoolUser> SchoolUsers { get; set; }
+        public List<SchoolUser> Schools { get; set; }
     }
 }

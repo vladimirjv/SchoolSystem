@@ -16,6 +16,12 @@ using SchoolSystem.Models;
 
 namespace SchoolSystem.Controllers
 {
+  /*
+    Users Contoller with auth routes
+   */
+  //<summary>
+  // User controller endpoint
+  //<summary>
   [Authorize]
   [ApiController]
   [Route("api/[controller]")]
@@ -25,6 +31,9 @@ namespace SchoolSystem.Controllers
     private IMapper _mapper;
     private readonly AppSettings _appSettings;
 
+    //<summary>
+    // Constructor
+    //<summary>
     public UsersController(
         IUserService userService,
         IMapper mapper,
@@ -51,7 +60,8 @@ namespace SchoolSystem.Controllers
       {
         Subject = new ClaimsIdentity(new Claim[]
           {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                new Claim(ClaimTypes.Name, user.Id.ToString()),
+                // new Claim(ClaimTypes.Role, user.Role)
           }),
         Expires = DateTime.UtcNow.AddDays(7),
         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
